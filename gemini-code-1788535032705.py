@@ -267,7 +267,7 @@ elif page == "🤖 AI Financial Advisor":
                             "content": user_query
                         }
                     ],
-                    model="llama-3.3-70b-versatile",
+                    model="openai/gpt-oss-120b",
                 )
                 st.markdown("### Advice:")
                 st.write(chat_completion.choices[0].message.content)
