@@ -1,7 +1,6 @@
 import streamlit as st
 import json
 import os
-from groq import Groq
 
 # --- Page Setup ---
 st.set_page_config(page_title="PocketVault & Budget", page_icon="💰", layout="wide")
@@ -253,9 +252,10 @@ elif page == "🤖 AI Financial Advisor":
             st.warning("Please enter a question.")
         else:
             try:
-                client = Groq(api_key=api_key)
-                summary = f"Total balance: {st.session_state.data['bank_balance']}. Allocations: {json.dumps(st.session_state.data['blocks'])}."
-                
+               from groq import Groq
+
+client = Groq(api_key=api_key)
+summary = f"Total balance: {st.session_state.data['bank_balance']}. Allocations: {json.dumps(st.session_state.data['blocks'])}."
                 chat_completion = client.chat.completions.create(
                     messages=[
                         {
